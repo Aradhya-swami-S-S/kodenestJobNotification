@@ -60,3 +60,9 @@ input, textarea, select {
   font-family: inherit;
   font-size: inherit;
 }
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
