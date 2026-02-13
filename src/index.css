@@ -1,0 +1,62 @@
+/* KodNest Premium Build System - Global Styles */
+
+:root {
+  /* Color System - Maximum 4 colors */
+  --color-background: #F7F6F3;
+  --color-text-primary: #111111;
+  --color-accent: #8B0000;
+  --color-success: #2D5016;
+  --color-warning: #8B6914;
+  --color-border: #D4D2CC;
+  --color-surface: #FFFFFF;
+  
+  /* Spacing System - Consistent scale */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  
+  /* Typography */
+  --font-serif: 'Crimson Pro', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-body: 16px;
+  --line-height-body: 1.6;
+  --max-text-width: 720px;
+  
+  /* Interaction */
+  --transition-speed: 150ms;
+  --border-radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}

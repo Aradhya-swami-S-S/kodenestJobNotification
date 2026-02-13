@@ -1,43 +1,48 @@
-import React from 'react'
-import Button from './Button'
-import PromptBox from './PromptBox'
-import EmptyState from './EmptyState'
+import React, { useState } from 'react'
+import Button from './ui/Button'
+import './SecondaryPanel.css'
 
 function SecondaryPanel() {
+  const [copied, setCopied] = useState(false)
+  
+  const promptText = `Create a premium SaaS design system with calm, intentional design. Use #F7F6F3 background, #111111 text, #8B0000 accent. Spacing: 8, 16, 24, 40, 64px. Serif headings, sans-serif body.`
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(promptText)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
-    <aside className="workspace__secondary">
-      <div className="panel">
-        <div className="panel__title">Step Guidance</div>
-        
-        <div className="panel__section">
-          <p style={{ fontSize: '14px', color: '#5A5A5A', lineHeight: 1.6 }}>
-            Review the design system foundation. This establishes the visual language for the entire product.
-          </p>
-        </div>
-
-        <div className="panel__section">
-          <PromptBox>
-            Design system created with calm, intentional principles.
-          </PromptBox>
-        </div>
-
-        <div className="panel__actions">
-          <Button variant="primary">Build in Lovable</Button>
-          <Button variant="success">It Worked</Button>
-          <Button variant="secondary">Report Error</Button>
-          <Button variant="secondary">Add Screenshot</Button>
-        </div>
+    <div className="secondary-panel">
+      <div className="panel-section">
+        <h3 className="panel-heading">Step Explanation</h3>
+        <p className="panel-text">
+          This design system establishes the foundation for KodNest Premium Build System. 
+          Every component follows consistent spacing, typography, and color rules.
+        </p>
       </div>
 
-      <div className="panel mt-md">
-        <div className="panel__title">Empty State Example</div>
-        <EmptyState 
-          title="No builds yet"
-          description="Start your first build to see results here."
-          actionLabel="Create Build"
-        />
+      <div className="panel-section">
+        <h3 className="panel-heading">Copyable Prompt</h3>
+        <div className="prompt-box">
+          <p className="prompt-text">{promptText}</p>
+        </div>
+        <Button variant="secondary" onClick={handleCopy} fullWidth>
+          {copied ? 'Copied' : 'Copy Prompt'}
+        </Button>
       </div>
-    </aside>
+
+      <div className="panel-section">
+        <h3 className="panel-heading">Actions</h3>
+        <div className="action-buttons">
+          <Button variant="primary" fullWidth>Build in Lovable</Button>
+          <Button variant="secondary" fullWidth>It Worked</Button>
+          <Button variant="secondary" fullWidth>Report Error</Button>
+          <Button variant="secondary" fullWidth>Add Screenshot</Button>
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -1,11 +1,12 @@
 import React from 'react'
+import './ContextHeader.css'
 
 function ContextHeader({ title, subtitle }) {
   return (
-    <section className="context-header">
-      <h1 className="context-header__title">{title}</h1>
-      <p className="context-header__subtitle">{subtitle}</p>
-    </section>
+    <div className="context-header">
+      <h1 className="context-title">{title}</h1>
+      <p className="context-subtitle">{subtitle}</p>
+    </div>
   )
 }
 
