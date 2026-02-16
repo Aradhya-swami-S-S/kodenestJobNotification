@@ -1,0 +1,1 @@
+Premium SaaS job tracker with intelligent match scoring (0-100%), daily digest generation, and status tracking. Features 60+ realistic Indian tech jobs from Amazon, Infosys, Razorpay, Flipkart & more. Built with React + Vite. Calm, professional design with advanced filtering, localStorage persistence, and comprehensive testing system. Perfect for serious job seekers. 🚀

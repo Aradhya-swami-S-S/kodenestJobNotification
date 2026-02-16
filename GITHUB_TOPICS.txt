@@ -1,0 +1,22 @@
+Topics/Tags for GitHub Repository:
+
+react
+vite
+job-tracker
+job-search
+saas
+match-scoring
+daily-digest
+status-tracking
+indian-tech-jobs
+career-management
+job-application
+localStorage
+react-router
+premium-design
+design-system
+job-board
+recruitment
+tech-jobs
+frontend
+javascript
