@@ -10,7 +10,9 @@ function Navigation() {
     { path: '/saved', label: 'Saved' },
     { path: '/digest', label: 'Digest' },
     { path: '/settings', label: 'Settings' },
-    { path: '/proof', label: 'Proof' }
+    { path: '/proof', label: 'Proof' },
+    { path: '/test', label: 'Test' },
+    { path: '/ship', label: 'Ship' }
   ]
 
   return (
