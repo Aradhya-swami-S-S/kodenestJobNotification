@@ -67,6 +67,8 @@ function FilterBar({ filters, onFilterChange }) {
       >
         <option value="latest">Latest</option>
         <option value="oldest">Oldest</option>
+        <option value="match">Match Score</option>
+        <option value="salary">Salary</option>
       </select>
     </div>
   )

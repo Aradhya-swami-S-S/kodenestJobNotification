@@ -20,6 +20,13 @@
   gap: var(--space-sm);
 }
 
+.job-badges {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .job-title {
   font-size: 18px;
   font-weight: 600;
@@ -89,4 +96,38 @@
 
 .job-actions .btn {
   flex: 1;
+}
+
+
+.match-score-badge {
+  padding: 4px var(--space-xs);
+  border-radius: var(--border-radius);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.score-excellent {
+  background-color: #F0F5ED;
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.score-good {
+  background-color: #FFF9F0;
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.score-neutral {
+  background-color: #F7F6F3;
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.score-low {
+  background-color: #F7F6F3;
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+  opacity: 0.5;
 }

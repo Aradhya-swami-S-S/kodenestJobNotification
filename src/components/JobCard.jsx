@@ -1,8 +1,9 @@
 import React from 'react'
 import Button from './ui/Button'
+import { getScoreBadgeClass } from '../utils/matchScore'
 import './JobCard.css'
 
-function JobCard({ job, onView, onSave, isSaved }) {
+function JobCard({ job, onView, onSave, isSaved, matchScore }) {
   const handleApply = () => {
     window.open(job.applyUrl, '_blank')
   }
@@ -20,9 +21,16 @@ function JobCard({ job, onView, onSave, isSaved }) {
           <h3 className="job-title">{job.title}</h3>
           <p className="job-company">{job.company}</p>
         </div>
-        <span className={`source-badge source-${job.source.toLowerCase()}`}>
-          {job.source}
-        </span>
+        <div className="job-badges">
+          {matchScore !== undefined && (
+            <span className={`match-score-badge ${getScoreBadgeClass(matchScore)}`}>
+              {matchScore}%
+            </span>
+          )}
+          <span className={`source-badge source-${job.source.toLowerCase()}`}>
+            {job.source}
+          </span>
+        </div>
       </div>
 
       <div className="job-details">
