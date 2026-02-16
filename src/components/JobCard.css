@@ -1,0 +1,92 @@
+.job-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: border-color var(--transition-speed) ease-in-out;
+}
+
+.job-card:hover {
+  border-color: var(--color-text-primary);
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.job-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-serif);
+}
+
+.job-company {
+  font-size: 15px;
+  opacity: 0.7;
+}
+
+.source-badge {
+  padding: 4px var(--space-xs);
+  border-radius: var(--border-radius);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+}
+
+.source-linkedin {
+  background-color: #F0F5FF;
+  border-color: #0077B5;
+  color: #0077B5;
+}
+
+.source-naukri {
+  background-color: #FFF5F0;
+  border-color: #FF6B35;
+  color: #FF6B35;
+}
+
+.source-indeed {
+  background-color: #F0F9FF;
+  border-color: #2164F3;
+  color: #2164F3;
+}
+
+.job-details {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.job-detail-separator {
+  opacity: 0.4;
+}
+
+.job-salary {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.job-meta {
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+.job-actions {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+.job-actions .btn {
+  flex: 1;
+}
