@@ -1,0 +1,36 @@
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: var(--space-lg);
+}
+
+.landing-content {
+  max-width: 720px;
+  text-align: center;
+}
+
+.landing-headline {
+  font-size: 64px;
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.landing-subtext {
+  font-size: 20px;
+  margin-bottom: var(--space-xl);
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .landing-headline {
+    font-size: 40px;
+  }
+
+  .landing-subtext {
+    font-size: 18px;
+  }
+}

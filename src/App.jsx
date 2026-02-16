@@ -1,6 +1,7 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
+import Landing from './pages/Landing'
 import Dashboard from './pages/Dashboard'
 import Settings from './pages/Settings'
 import Saved from './pages/Saved'
@@ -13,7 +14,7 @@ function App() {
       <div className="app-wrapper">
         <Navigation />
         <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/digest" element={<Digest />} />

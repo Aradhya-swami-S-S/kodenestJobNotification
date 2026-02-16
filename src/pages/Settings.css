@@ -1,0 +1,36 @@
+.settings-page {
+  padding: var(--space-xl) var(--space-lg);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: var(--space-xl);
+}
+
+.settings-title {
+  font-size: 48px;
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.settings-subtitle {
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+}
+
+.settings-actions {
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: flex-end;
+}

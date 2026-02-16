@@ -1,11 +1,19 @@
 import React from 'react'
-import './PagePlaceholder.css'
+import './EmptyState.css'
 
 function Digest() {
   return (
-    <div className="page-placeholder">
-      <h1 className="page-title">Digest</h1>
-      <p className="page-subtitle">This section will be built in the next step.</p>
+    <div className="page-container">
+      <div className="page-header">
+        <h1 className="page-title">Digest</h1>
+      </div>
+      <div className="page-content">
+        <div className="empty-state">
+          <p className="empty-state-text">
+            Your daily digest will be delivered at 9AM. Check back tomorrow.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
