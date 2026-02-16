@@ -225,7 +225,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 👨‍💻 Author
 
-**Your Name**
+Aradhyaswami S S
 - GitHub: [@Aradhya-swami-S-S](https://github.com/Aradhya-swami-S-S)
 - LinkedIn: [aradhyaswami-salimath](https://www.linkedin.com/in/aradhyaswami-salimath/)
 
