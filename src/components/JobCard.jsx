@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './ui/Button'
 import { getScoreBadgeClass } from '../utils/matchScore'
+import { JOB_STATUSES, getJobStatus, setJobStatus, getStatusBadgeClass } from '../utils/statusTracking'
 import './JobCard.css'
 
-function JobCard({ job, onView, onSave, isSaved, matchScore }) {
+function JobCard({ job, onView, onSave, isSaved, matchScore, onStatusChange }) {
+  const [status, setStatus] = useState(getJobStatus(job.id))
+
   const handleApply = () => {
     window.open(job.applyUrl, '_blank')
+  }
+
+  const handleStatusChange = (newStatus) => {
+    setStatus(newStatus)
+    setJobStatus(job.id, newStatus)
+    if (onStatusChange) {
+      onStatusChange(newStatus)
+    }
   }
 
   const formatPostedDate = (days) => {
@@ -45,6 +56,21 @@ function JobCard({ job, onView, onSave, isSaved, matchScore }) {
 
       <div className="job-meta">
         <span className="job-posted">{formatPostedDate(job.postedDaysAgo)}</span>
+      </div>
+
+      <div className="job-status-group">
+        <label className="status-label">Status:</label>
+        <div className="status-buttons">
+          {Object.values(JOB_STATUSES).map(statusOption => (
+            <button
+              key={statusOption}
+              className={`status-btn ${status === statusOption ? 'status-btn-active' : ''} ${getStatusBadgeClass(statusOption)}`}
+              onClick={() => handleStatusChange(statusOption)}
+            >
+              {statusOption}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="job-actions">

@@ -2,9 +2,11 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { jobsData } from '../data/jobsData'
 import { calculateMatchScore } from '../utils/matchScore'
+import { getJobStatus } from '../utils/statusTracking'
 import JobCard from '../components/JobCard'
 import JobModal from '../components/JobModal'
 import FilterBar from '../components/FilterBar'
+import Toast from '../components/Toast'
 import './Dashboard.css'
 
 function Dashboard() {
@@ -12,12 +14,14 @@ function Dashboard() {
   const [savedJobs, setSavedJobs] = useState([])
   const [preferences, setPreferences] = useState(null)
   const [showOnlyMatches, setShowOnlyMatches] = useState(false)
+  const [toast, setToast] = useState(null)
   const [filters, setFilters] = useState({
     keyword: '',
     location: '',
     mode: '',
     experience: '',
     source: '',
+    status: '',
     sort: 'latest'
   })
 
@@ -42,6 +46,10 @@ function Dashboard() {
     localStorage.setItem('savedJobs', JSON.stringify(updated))
   }
 
+  const handleStatusChange = (status) => {
+    setToast(`Status updated: ${status}`)
+  }
+
   const extractSalaryNumber = (salaryRange) => {
     const match = salaryRange.match(/(\d+)/)
     return match ? parseInt(match[1]) : 0
@@ -50,7 +58,8 @@ function Dashboard() {
   const filteredJobs = useMemo(() => {
     let filtered = jobsData.map(job => ({
       ...job,
-      matchScore: preferences ? calculateMatchScore(job, preferences) : 0
+      matchScore: preferences ? calculateMatchScore(job, preferences) : 0,
+      status: getJobStatus(job.id)
     }))
 
     // Apply keyword filter
@@ -80,6 +89,11 @@ function Dashboard() {
     // Apply source filter
     if (filters.source) {
       filtered = filtered.filter(job => job.source === filters.source)
+    }
+
+    // Apply status filter
+    if (filters.status) {
+      filtered = filtered.filter(job => job.status === filters.status)
     }
 
     // Apply match threshold filter
@@ -148,6 +162,7 @@ function Dashboard() {
               onSave={handleSaveJob}
               isSaved={savedJobs.includes(job.id)}
               matchScore={preferences ? job.matchScore : undefined}
+              onStatusChange={handleStatusChange}
             />
           ))}
         </div>
@@ -155,6 +170,10 @@ function Dashboard() {
 
       {selectedJob && (
         <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} />
+      )}
+
+      {toast && (
+        <Toast message={toast} onClose={() => setToast(null)} />
       )}
     </div>
   )

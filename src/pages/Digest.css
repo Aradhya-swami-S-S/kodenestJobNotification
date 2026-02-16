@@ -184,3 +184,96 @@
     width: 100%;
   }
 }
+
+
+.status-updates-section {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.status-updates-title {
+  font-size: 24px;
+  font-family: var(--font-serif);
+  margin-bottom: var(--space-md);
+}
+
+.status-updates-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.status-update-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  gap: var(--space-sm);
+}
+
+.status-update-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-update-job {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status-update-company {
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.status-update-badge {
+  display: inline-block;
+  padding: 2px var(--space-xs);
+  border-radius: var(--border-radius);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.status-not-applied {
+  background-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.status-applied {
+  background-color: #F0F5FF;
+  color: #2164F3;
+}
+
+.status-rejected {
+  background-color: #FFF0F0;
+  color: var(--color-accent);
+}
+
+.status-selected {
+  background-color: #F0F5ED;
+  color: var(--color-success);
+}
+
+.status-update-time {
+  font-size: 13px;
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .status-update-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

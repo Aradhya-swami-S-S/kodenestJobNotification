@@ -62,6 +62,18 @@ function FilterBar({ filters, onFilterChange }) {
 
       <select
         className="filter-select"
+        value={filters.status}
+        onChange={(e) => onFilterChange({ ...filters, status: e.target.value })}
+      >
+        <option value="">All Status</option>
+        <option value="Not Applied">Not Applied</option>
+        <option value="Applied">Applied</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Selected">Selected</option>
+      </select>
+
+      <select
+        className="filter-select"
         value={filters.sort}
         onChange={(e) => onFilterChange({ ...filters, sort: e.target.value })}
       >

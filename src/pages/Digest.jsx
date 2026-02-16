@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../components/ui/Button'
 import { generateDigest, loadTodayDigest, saveDigest, getFormattedDate, formatDigestAsText, createEmailDraft } from '../utils/digestEngine'
+import { getRecentStatusUpdates, getFormattedDate as formatTimestamp } from '../utils/statusTracking'
+import { jobsData } from '../data/jobsData'
 import './Digest.css'
 
 function Digest() {
   const [preferences, setPreferences] = useState(null)
   const [digest, setDigest] = useState(null)
   const [copied, setCopied] = useState(false)
+  const [statusUpdates, setStatusUpdates] = useState([])
 
   useEffect(() => {
     const prefs = localStorage.getItem('jobTrackerPreferences')
@@ -20,6 +23,10 @@ function Digest() {
     if (existingDigest) {
       setDigest(existingDigest)
     }
+
+    // Load recent status updates
+    const updates = getRecentStatusUpdates(5)
+    setStatusUpdates(updates)
   }, [])
 
   const handleGenerateDigest = () => {
@@ -50,6 +57,10 @@ function Digest() {
   const handleCreateEmailDraft = () => {
     const mailtoLink = createEmailDraft(digest)
     window.location.href = mailtoLink
+  }
+
+  const getJobById = (jobId) => {
+    return jobsData.find(job => job.id === jobId)
   }
 
   if (!preferences) {
@@ -88,6 +99,30 @@ function Digest() {
               Demo Mode: Daily 9AM trigger simulated manually.
             </p>
           </div>
+
+          {statusUpdates.length > 0 && (
+            <div className="status-updates-section">
+              <h2 className="status-updates-title">Recent Status Updates</h2>
+              <div className="status-updates-list">
+                {statusUpdates.map((update, index) => {
+                  const job = getJobById(update.jobId)
+                  if (!job) return null
+                  return (
+                    <div key={index} className="status-update-item">
+                      <div className="status-update-content">
+                        <h4 className="status-update-job">{job.title}</h4>
+                        <p className="status-update-company">{job.company}</p>
+                        <span className={`status-update-badge status-${update.status.toLowerCase().replace(' ', '-')}`}>
+                          {update.status}
+                        </span>
+                      </div>
+                      <span className="status-update-time">{formatTimestamp(update.timestamp)}</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )
@@ -156,6 +191,30 @@ function Digest() {
             </p>
           </div>
         </div>
+
+        {statusUpdates.length > 0 && (
+          <div className="status-updates-section">
+            <h2 className="status-updates-title">Recent Status Updates</h2>
+            <div className="status-updates-list">
+              {statusUpdates.map((update, index) => {
+                const job = getJobById(update.jobId)
+                if (!job) return null
+                return (
+                  <div key={index} className="status-update-item">
+                    <div className="status-update-content">
+                      <h4 className="status-update-job">{job.title}</h4>
+                      <p className="status-update-company">{job.company}</p>
+                      <span className={`status-update-badge status-${update.status.toLowerCase().replace(' ', '-')}`}>
+                        {update.status}
+                      </span>
+                    </div>
+                    <span className="status-update-time">{formatTimestamp(update.timestamp)}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
 
         <div className="digest-actions">
           <Button variant="secondary" onClick={handleCopyToClipboard}>
